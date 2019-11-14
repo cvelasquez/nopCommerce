@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Widgets",
+  "FriendlyName": "Swipe Slider Pro",
+  "SystemName": "Widgets.SwipeSliderPro",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.20" ],
+  "Author": "AI Software",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Widgets.SwipeSliderPro.dll",
+  "Description": "This plugin allows you to change the contents of main page slider"
+}
