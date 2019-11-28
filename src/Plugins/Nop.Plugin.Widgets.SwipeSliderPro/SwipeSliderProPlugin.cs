@@ -91,7 +91,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Link.Hint", "Enter URL. Leave empty if you don't want this picture to be clickable.");
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.AltText", "Image alternate text");
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.AltText.Hint", "Enter alternate text that will be added to image.");
-
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.SwipeType", "Swipe Slider Type");
             base.Install();
         }
 
@@ -112,7 +112,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro
             _localizationService.DeletePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Link.Hint");
             _localizationService.DeletePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.AltText");
             _localizationService.DeletePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.AltText.Hint");
-
+            _localizationService.DeletePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.SwipeType");
             base.Uninstall();
         }
 

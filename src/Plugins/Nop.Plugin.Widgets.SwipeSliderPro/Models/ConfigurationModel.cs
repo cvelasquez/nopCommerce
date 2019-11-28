@@ -133,5 +133,18 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Models
         [NopResourceDisplayName("Plugins.Widgets.SwipeSliderPro.AltText")]
         public string AltText9 { get; set; }
         public bool AltText9_OverrideForStore { get; set; }
+
+        [NopResourceDisplayName("Plugins.Widgets.SwipeSliderPro.SwipeType")]
+        public int SwipeType { get; set; }
+        public int SwipeType_OverrideForStore { get; set; }
+        public CoverflowEffect3D CoverflowEffect3D { get; set; }
+    }
+
+    public enum SwipeType
+    {
+        /// <summary>
+        /// 3d Coverflow Effect
+        /// </summary>
+        CoverflowEffect3d = 1,
     }
 }

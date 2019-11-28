@@ -1,19 +1,81 @@
-﻿@*@model Nop.Plugin.Widgets.SwipeSliderPro.SwipeTypes.CoverflowEffect3D*@
+﻿@model Nop.Plugin.Widgets.SwipeSliderPro.Models.ConfigurationModel
+@using Nop.Plugin.Widgets.SwipeSliderPro.Models
+@using Nop.Services
 
-    <div class="panel panel-default">
-        <div class="panel-heading" data-toggle="collapse" data-target="#cfe3">
-            <i class="toggle-icon fa fa-plus"></i>
-            <span>Coverflow Effect 3D</span>
+<div class="panel panel-default">
+    <div class="panel-heading" data-toggle="collapse" data-target="#cfe3">
+        <i class="toggle-icon fa fa-plus"></i>
+        <span>Coverflow Effect 3D</span>
+    </div>
+    <div id="cfe3" class="panel-body collapse">
+        <div class="panel panel-default">
+            <div class="panel-body">Demo</div>
+            <iframe data-src="https://swiperjs.com/demos/240-effect-coverflow.html" scrolling="no" src="https://swiperjs.com/demos/240-effect-coverflow.html" frameborder="0" style="width: 1200px;height: 400px;">
+            </iframe>
         </div>
-        <div id="cfe3" class="panel-body collapse">   
-            <div class="panel panel-default">
-                <div class="panel-body">Demo</div>
-                <iframe data-src="https://swiperjs.com/demos/240-effect-coverflow.html" scrolling="no" src="https://swiperjs.com/demos/240-effect-coverflow.html" frameborder="0" style="width: 1200px;height: 400px;">
-                </iframe>
+        <div class="panel panel-default">
+            <div class="panel-body">Parameters</div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="@Model.CoverflowEffect3D.Loop_OverrideForStore" asp-input="@Model.CoverflowEffect3D.Loop" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@Model.CoverflowEffect3D.Loop" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="@Model.CoverflowEffect3D.Loop" />
+                    <span asp-validation-for="@Model.CoverflowEffect3D.Loop"></span>
+                </div>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-body">Parameters</div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="@Model.CoverflowEffect3D.FreeMode_OverrideForStore" asp-input="@Model.CoverflowEffect3D.FreeMode" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@Model.CoverflowEffect3D.FreeMode" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="@Model.CoverflowEffect3D.FreeMode" />
+                    <span asp-validation-for="@Model.CoverflowEffect3D.FreeMode"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="@Model.CoverflowEffect3D.AutoPlay_OverrideForStore" asp-input="@Model.CoverflowEffect3D.AutoPlay" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@Model.CoverflowEffect3D.AutoPlay" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="@Model.CoverflowEffect3D.AutoPlay" />
+                    <span asp-validation-for="@Model.CoverflowEffect3D.AutoPlay"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="@Model.CoverflowEffect3D.AutoPlayDisableOnInteraction_OverrideForStore" asp-input="@Model.CoverflowEffect3D.AutoPlayDisableOnInteraction" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@Model.CoverflowEffect3D.AutoPlayDisableOnInteraction" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="@Model.CoverflowEffect3D.AutoPlayDisableOnInteraction" />
+                    <span asp-validation-for="@Model.CoverflowEffect3D.AutoPlayDisableOnInteraction"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="@Model.CoverflowEffect3D.AutoPlayDelay_OverrideForStore" asp-input="@Model.CoverflowEffect3D.AutoPlayDelay" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@Model.CoverflowEffect3D.AutoPlayDelay" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="@Model.CoverflowEffect3D.AutoPlayDelay" />
+                    <span asp-validation-for="@Model.CoverflowEffect3D.AutoPlayDelay"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="@Model.CoverflowEffect3D.AspectRelation_OverrideForStore" asp-input="@Model.CoverflowEffect3D.AspectRelation" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@Model.CoverflowEffect3D.AspectRelation" />
+                </div>
+                <div class="col-md-9">
+                    <nop-select asp-for="@Model.CoverflowEffect3D.AspectRelation" asp-items="@(((AspectRelation)Model.SwipeType).ToSelectList())" />
+                    <span asp-validation-for="@Model.CoverflowEffect3D.AspectRelation"></span>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
