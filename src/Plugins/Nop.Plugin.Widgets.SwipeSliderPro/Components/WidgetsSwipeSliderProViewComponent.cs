@@ -84,13 +84,13 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Components
                 AltText9 = swipeSliderProSettings.AltText9
             };
 
-            //if (string.IsNullOrEmpty(model.Picture1Url) && string.IsNullOrEmpty(model.Picture2Url) &&
-            //    string.IsNullOrEmpty(model.Picture3Url) && string.IsNullOrEmpty(model.Picture4Url) &&
-            //    string.IsNullOrEmpty(model.Picture5Url) && string.IsNullOrEmpty(model.Picture6Url) &&
-            //    string.IsNullOrEmpty(model.Picture7Url) && string.IsNullOrEmpty(model.Picture8Url) &&
-            //    string.IsNullOrEmpty(model.Picture9Url))
-            //    //no pictures uploaded
-            //    return Content("");
+            if (string.IsNullOrEmpty(model.Picture1Url) && string.IsNullOrEmpty(model.Picture2Url) &&
+                string.IsNullOrEmpty(model.Picture3Url) && string.IsNullOrEmpty(model.Picture4Url) &&
+                string.IsNullOrEmpty(model.Picture5Url) && string.IsNullOrEmpty(model.Picture6Url) &&
+                string.IsNullOrEmpty(model.Picture7Url) && string.IsNullOrEmpty(model.Picture8Url) &&
+                string.IsNullOrEmpty(model.Picture9Url))
+                //no pictures uploaded
+                return Content("");
 
             return View("~/Plugins/Widgets.SwipeSliderPro/Views/PublicInfo.cshtml", model);
         }

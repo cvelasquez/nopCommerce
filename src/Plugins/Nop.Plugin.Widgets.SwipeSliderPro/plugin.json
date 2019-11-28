@@ -3,7 +3,7 @@
   "FriendlyName": "Swipe Slider Pro",
   "SystemName": "Widgets.SwipeSliderPro",
   "Version": "1.0.0",
-  "SupportedVersions": [ "4.20" ],
+  "SupportedVersions": [ "4.30" ],
   "Author": "AI Software",
   "DisplayOrder": 1,
   "FileName": "Nop.Plugin.Widgets.SwipeSliderPro.dll",

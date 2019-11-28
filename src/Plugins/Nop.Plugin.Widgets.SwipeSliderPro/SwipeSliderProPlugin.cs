@@ -64,69 +64,57 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro
         /// <summary>
         /// Install plugin
         /// </summary>
-        //public override void Install()
-        //{
-        //    //pictures
-        //    var sampleImagesPath = _fileProvider.MapPath("~/Plugins/Widgets.NivoSlider/Content/nivoslider/sample-images/");
+        public override void Install()
+        {
+            //pictures
+            var sampleImagesPath = _fileProvider.MapPath("~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/sample-images/");
 
-        //    //settings
-        //    var settings = new NivoSliderSettings
-        //    {
-        //        Picture1Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "banner1.jpg")), MimeTypes.ImagePJpeg, "banner_1").Id,
-        //        Text1 = "",
-        //        Link1 = _webHelper.GetStoreLocation(false),
-        //        Picture2Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "banner2.jpg")), MimeTypes.ImagePJpeg, "banner_2").Id,
-        //        Text2 = "",
-        //        Link2 = _webHelper.GetStoreLocation(false)
-        //        //Picture3Id = _pictureService.InsertPicture(File.ReadAllBytes(_fileProvider.Combine(sampleImagesPath,"banner3.jpg")), MimeTypes.ImagePJpeg, "banner_3").Id,
-        //        //Text3 = "",
-        //        //Link3 = _webHelper.GetStoreLocation(false),
-        //    };
-        //    _settingService.SaveSetting(settings);
+            //settings
+            var settings = new SwipeSliderProSettings
+            {
+                Picture1Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-1.jpg")), MimeTypes.ImagePJpeg, "nature-1").Id,
+                Picture2Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-2.jpg")), MimeTypes.ImagePJpeg, "nature-2").Id,
+                Picture3Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-3.jpg")), MimeTypes.ImagePJpeg, "nature-3").Id,
+                Picture4Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-4.jpg")), MimeTypes.ImagePJpeg, "nature-4").Id,
+                Picture5Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-5.jpg")), MimeTypes.ImagePJpeg, "nature-5").Id,
+                Picture6Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-6.jpg")), MimeTypes.ImagePJpeg, "nature-6").Id,
+                Picture7Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-7.jpg")), MimeTypes.ImagePJpeg, "nature-7").Id,
+                Picture8Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-8.jpg")), MimeTypes.ImagePJpeg, "nature-8").Id,
+                Picture9Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-9.jpg")), MimeTypes.ImagePJpeg, "nature-9").Id,
+            };
+            _settingService.SaveSetting(settings);
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Picture", "Picture");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Picture.Hint", "Upload picture.");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Text", "Comment");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Text.Hint", "Enter comment for picture. Leave empty if you don't want to display any text.");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Link", "URL");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Link.Hint", "Enter URL. Leave empty if you don't want this picture to be clickable.");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.AltText", "Image alternate text");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.AltText.Hint", "Enter alternate text that will be added to image.");
 
-
-        //    _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.NivoSlider.Picture1", "Picture 1");
-        //    _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.NivoSlider.Picture2", "Picture 2");
-        //    _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.NivoSlider.Picture3", "Picture 3");
-        //    _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.NivoSlider.Picture4", "Picture 4");
-        //    _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.NivoSlider.Picture5", "Picture 5");
-        //    _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.NivoSlider.Picture", "Picture");
-        //    _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.NivoSlider.Picture.Hint", "Upload picture.");
-        //    _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.NivoSlider.Text", "Comment");
-        //    _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.NivoSlider.Text.Hint", "Enter comment for picture. Leave empty if you don't want to display any text.");
-        //    _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.NivoSlider.Link", "URL");
-        //    _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.NivoSlider.Link.Hint", "Enter URL. Leave empty if you don't want this picture to be clickable.");
-        //    _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.NivoSlider.AltText", "Image alternate text");
-        //    _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.NivoSlider.AltText.Hint", "Enter alternate text that will be added to image.");
-
-        //    base.Install();
-        //}
+            base.Install();
+        }
 
         /// <summary>
         /// Uninstall plugin
         /// </summary>
-        //public override void Uninstall()
-        //{
-        //    //settings
-        //    _settingService.DeleteSetting<NivoSliderSettings>();
+        public override void Uninstall()
+        {
+            //settings
+            _settingService.DeleteSetting<SwipeSliderProSettings>();
 
-        //    //locales
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Widgets.NivoSlider.Picture1");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Widgets.NivoSlider.Picture2");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Widgets.NivoSlider.Picture3");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Widgets.NivoSlider.Picture4");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Widgets.NivoSlider.Picture5");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Widgets.NivoSlider.Picture");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Widgets.NivoSlider.Picture.Hint");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Widgets.NivoSlider.Text");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Widgets.NivoSlider.Text.Hint");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Widgets.NivoSlider.Link");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Widgets.NivoSlider.Link.Hint");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Widgets.NivoSlider.AltText");
-        //    _localizationService.DeletePluginLocaleResource("Plugins.Widgets.NivoSlider.AltText.Hint");
+            //locales
+            _localizationService.DeletePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Picture");
+            _localizationService.DeletePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Picture.Hint");
+            _localizationService.DeletePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Text");
+            _localizationService.DeletePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Text.Hint");
+            _localizationService.DeletePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Link");
+            _localizationService.DeletePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Link.Hint");
+            _localizationService.DeletePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.AltText");
+            _localizationService.DeletePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.AltText.Hint");
 
-        //    base.Uninstall();
-        //}
+            base.Uninstall();
+        }
 
         /// <summary>
         /// Gets a value indicating whether to hide this plugin on the widget list page in the admin area
