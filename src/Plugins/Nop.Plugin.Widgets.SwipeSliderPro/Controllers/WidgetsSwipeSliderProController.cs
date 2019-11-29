@@ -48,6 +48,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Controllers
             var swipeSliderProSettings = _settingService.LoadSetting<SwipeSliderProSettings>(storeScope);
             var model = new ConfigurationModel
             {
+                #region slides
                 Picture1Id = swipeSliderProSettings.Picture1Id,
                 Text1 = swipeSliderProSettings.Text1,
                 Link1 = swipeSliderProSettings.Link1,
@@ -92,12 +93,23 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Controllers
                 Text9 = swipeSliderProSettings.Text9,
                 Link9 = swipeSliderProSettings.Link9,
                 AltText9 = swipeSliderProSettings.AltText9,
+                #endregion
+                SwipeType = swipeSliderProSettings.SwipeType,
+                CoverflowEffect3D = new CoverflowEffect3DModel()
+                {
+                    AspectRelation = swipeSliderProSettings.CoverflowEffect3D.AspectRelation,
+                    AutoPlay = swipeSliderProSettings.CoverflowEffect3D.AutoPlay,
+                    AutoPlayDisableOnInteraction = swipeSliderProSettings.CoverflowEffect3D.AutoPlayDisableOnInteraction,
+                    FreeMode = swipeSliderProSettings.CoverflowEffect3D.FreeMode,
+                    Loop = swipeSliderProSettings.CoverflowEffect3D.Loop,
+                },
 
                 ActiveStoreScopeConfiguration = storeScope
             };
 
             if (storeScope > 0)
             {
+                #region slides                
                 model.Picture1Id_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings, x => x.Picture1Id, storeScope);
                 model.Text1_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings, x => x.Text1, storeScope);
                 model.Link1_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings, x => x.Link1, storeScope);
@@ -142,6 +154,19 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Controllers
                 model.Text9_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings, x => x.Text9, storeScope);
                 model.Link9_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings, x => x.Link9, storeScope);
                 model.AltText9_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings, x => x.AltText9, storeScope);
+                #endregion
+                
+                model.SwipeType_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings, x => x.SwipeType, storeScope);
+
+                #region CoverflowEffect3D
+                model.CoverflowEffect3D.AspectRelation_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings.CoverflowEffect3D, x => x.AspectRelation, storeScope);
+                model.CoverflowEffect3D.AutoPlay_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings.CoverflowEffect3D, x => x.AutoPlay, storeScope);
+                model.CoverflowEffect3D.AutoPlayDelay_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings.CoverflowEffect3D, x => x.AutoPlayDelay, storeScope);
+                model.CoverflowEffect3D.AutoPlayDisableOnInteraction_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings.CoverflowEffect3D, x => x.AutoPlayDisableOnInteraction, storeScope);
+                model.CoverflowEffect3D.FreeMode_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings.CoverflowEffect3D, x => x.FreeMode, storeScope);
+                model.CoverflowEffect3D.Loop_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings.CoverflowEffect3D, x => x.Loop, storeScope);
+                #endregion
+
             }
 
             return View("~/Plugins/Widgets.SwipeSliderPro/Views/Configure.cshtml", model);
@@ -156,7 +181,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Controllers
             //load settings for a chosen store scope
             var storeScope = _storeContext.ActiveStoreScopeConfiguration;
             var swipeSliderProSettings = _settingService.LoadSetting<SwipeSliderProSettings>(storeScope);
-
+            #region slides
             //get previous picture identifiers
             var previousPictureIds = new[] 
             {
@@ -215,7 +240,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Controllers
             swipeSliderProSettings.Text9 = model.Text9;
             swipeSliderProSettings.Link9 = model.Link9;
             swipeSliderProSettings.AltText9 = model.AltText9;
-
+            #endregion
             /* We do not clear cache after each setting update.
              * This behavior can increase performance because cached settings will not be cleared 
              * and loaded from database after each update */

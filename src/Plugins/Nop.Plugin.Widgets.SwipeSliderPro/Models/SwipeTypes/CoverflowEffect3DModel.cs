@@ -4,7 +4,7 @@ using Nop.Web.Framework.Models;
 
 namespace Nop.Plugin.Widgets.SwipeSliderPro.Models
 {
-    public class CoverflowEffect3D : BaseNopModel
+    public class CoverflowEffect3DModel : BaseNopModel
     {
         public bool Loop { get; set; }
         public bool Loop_OverrideForStore { get; set; }
@@ -20,9 +20,9 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Models
         public bool AspectRelation_OverrideForStore { get; set; }
     }
 
-    public enum AspectRelation
+    public enum AspectRelationEnum
     {
-        Books_Movies = 1,
-        Music_Apps = 2
+        Rectangle_Books_Movies = 1,
+        Square_Music_Apps = 2
     }
 }

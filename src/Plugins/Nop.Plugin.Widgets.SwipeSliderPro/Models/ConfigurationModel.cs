@@ -136,15 +136,12 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Models
 
         [NopResourceDisplayName("Plugins.Widgets.SwipeSliderPro.SwipeType")]
         public int SwipeType { get; set; }
-        public int SwipeType_OverrideForStore { get; set; }
-        public CoverflowEffect3D CoverflowEffect3D { get; set; }
+        public bool SwipeType_OverrideForStore { get; set; }
+        public CoverflowEffect3DModel CoverflowEffect3D { get; set; }
     }
 
-    public enum SwipeType
+    public enum SwipeTypeEnum
     {
-        /// <summary>
-        /// 3d Coverflow Effect
-        /// </summary>
         CoverflowEffect3d = 1,
     }
 }

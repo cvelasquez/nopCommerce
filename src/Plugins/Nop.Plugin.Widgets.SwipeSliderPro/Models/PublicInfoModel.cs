@@ -48,5 +48,9 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Models
         public string Text9 { get; set; }
         public string Link9 { get; set; }
         public string AltText9 { get; set; }
+
+        public int SwipeType { get; set; }
+
+        public CoverflowEffect3DSettings CoverflowEffect3D { get; set; }
     }
 }

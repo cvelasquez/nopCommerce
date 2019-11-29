@@ -81,7 +81,10 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Components
                 Picture9Url = GetPictureUrl(swipeSliderProSettings.Picture9Id),
                 Text9 = swipeSliderProSettings.Text9,
                 Link9 = swipeSliderProSettings.Link9,
-                AltText9 = swipeSliderProSettings.AltText9
+                AltText9 = swipeSliderProSettings.AltText9,
+
+                SwipeType = swipeSliderProSettings.SwipeType,
+                CoverflowEffect3D = swipeSliderProSettings.CoverflowEffect3D
             };
 
             if (string.IsNullOrEmpty(model.Picture1Url) && string.IsNullOrEmpty(model.Picture2Url) &&
@@ -92,7 +95,14 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Components
                 //no pictures uploaded
                 return Content("");
 
-            return View("~/Plugins/Widgets.SwipeSliderPro/Views/PublicInfo.cshtml", model);
+            switch (model.SwipeType)
+            {
+                case (int) SwipeTypeEnum.CoverflowEffect3d:
+                    return View("~/Plugins/Widgets.SwipeSliderPro/Views/SwipeTypes/CoverflowEffect3DPublicInfo.cshtml", model);                    
+                default:
+                    return View("~/Plugins/Widgets.SwipeSliderPro/Views/PublicInfo.cshtml", model);                    
+            }
+            
         }
 
         protected string GetPictureUrl(int pictureId)

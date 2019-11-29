@@ -30,11 +30,11 @@
                         <nop-label asp-for="@Model.SwipeType" />
                     </div>
                     <div class="col-md-9">
-                        <nop-select asp-for="@Model.SwipeType" asp-items="@(((SwipeType)Model.SwipeType).ToSelectList())" />
+                        <nop-select asp-for="@Model.SwipeType" asp-items="@(((SwipeTypeEnum)Model.SwipeType).ToSelectList())" />
                         <span asp-validation-for="@Model.SwipeType"></span>
                     </div>
                 </div>
-                @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/SwipeTypes/CoverflowEffect3D.cshtml")
+                @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/SwipeTypes/CoverflowEffect3DConfigure.cshtml")
             </div>
         </div>
 
