@@ -50,7 +50,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro
         public string AltText9 { get; set; }
 
         public int SwipeType { get; set; }
-        public CoverflowEffect3DSettings CoverflowEffect3D { get; set; }
+        public string CoverflowEffect3D { get; set; }
     }
 
     public class CoverflowEffect3DSettings : ISettings

@@ -10,6 +10,7 @@ using Nop.Services.Messages;
 using Nop.Services.Security;
 using Nop.Web.Framework;
 using Nop.Web.Framework.Controllers;
+using Newtonsoft.Json;
 
 namespace Nop.Plugin.Widgets.SwipeSliderPro.Controllers
 {
@@ -72,37 +73,32 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Controllers
                 Picture5Id = swipeSliderProSettings.Picture5Id,
                 Text5 = swipeSliderProSettings.Text5,
                 Link5 = swipeSliderProSettings.Link5,
-                AltText5 = swipeSliderProSettings.AltText5,   
-                
+                AltText5 = swipeSliderProSettings.AltText5,
+
                 Picture6Id = swipeSliderProSettings.Picture6Id,
                 Text6 = swipeSliderProSettings.Text6,
                 Link6 = swipeSliderProSettings.Link6,
-                AltText6 = swipeSliderProSettings.AltText6, 
-                
+                AltText6 = swipeSliderProSettings.AltText6,
+
                 Picture7Id = swipeSliderProSettings.Picture7Id,
                 Text7 = swipeSliderProSettings.Text7,
                 Link7 = swipeSliderProSettings.Link7,
-                AltText7 = swipeSliderProSettings.AltText7,  
-                
+                AltText7 = swipeSliderProSettings.AltText7,
+
                 Picture8Id = swipeSliderProSettings.Picture8Id,
                 Text8 = swipeSliderProSettings.Text8,
                 Link8 = swipeSliderProSettings.Link8,
                 AltText8 = swipeSliderProSettings.AltText8,
-                
+
                 Picture9Id = swipeSliderProSettings.Picture9Id,
                 Text9 = swipeSliderProSettings.Text9,
                 Link9 = swipeSliderProSettings.Link9,
                 AltText9 = swipeSliderProSettings.AltText9,
                 #endregion
                 SwipeType = swipeSliderProSettings.SwipeType,
-                CoverflowEffect3D = new CoverflowEffect3DModel()
-                {
-                    AspectRelation = swipeSliderProSettings.CoverflowEffect3D.AspectRelation,
-                    AutoPlay = swipeSliderProSettings.CoverflowEffect3D.AutoPlay,
-                    AutoPlayDisableOnInteraction = swipeSliderProSettings.CoverflowEffect3D.AutoPlayDisableOnInteraction,
-                    FreeMode = swipeSliderProSettings.CoverflowEffect3D.FreeMode,
-                    Loop = swipeSliderProSettings.CoverflowEffect3D.Loop,
-                },
+                
+                CoverflowEffect3D = swipeSliderProSettings.CoverflowEffect3D,
+
 
                 ActiveStoreScopeConfiguration = storeScope
             };
@@ -158,14 +154,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Controllers
                 
                 model.SwipeType_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings, x => x.SwipeType, storeScope);
 
-                #region CoverflowEffect3D
-                model.CoverflowEffect3D.AspectRelation_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings.CoverflowEffect3D, x => x.AspectRelation, storeScope);
-                model.CoverflowEffect3D.AutoPlay_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings.CoverflowEffect3D, x => x.AutoPlay, storeScope);
-                model.CoverflowEffect3D.AutoPlayDelay_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings.CoverflowEffect3D, x => x.AutoPlayDelay, storeScope);
-                model.CoverflowEffect3D.AutoPlayDisableOnInteraction_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings.CoverflowEffect3D, x => x.AutoPlayDisableOnInteraction, storeScope);
-                model.CoverflowEffect3D.FreeMode_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings.CoverflowEffect3D, x => x.FreeMode, storeScope);
-                model.CoverflowEffect3D.Loop_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings.CoverflowEffect3D, x => x.Loop, storeScope);
-                #endregion
+                model.CoverflowEffect3D_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings, x => x.CoverflowEffect3D, storeScope);                
 
             }
 
@@ -241,6 +230,8 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Controllers
             swipeSliderProSettings.Link9 = model.Link9;
             swipeSliderProSettings.AltText9 = model.AltText9;
             #endregion
+            swipeSliderProSettings.SwipeType = model.SwipeType;
+            swipeSliderProSettings.CoverflowEffect3D = model.CoverflowEffect3D;
             /* We do not clear cache after each setting update.
              * This behavior can increase performance because cached settings will not be cleared 
              * and loaded from database after each update */
@@ -288,6 +279,11 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Controllers
             _settingService.SaveSettingOverridablePerStore(swipeSliderProSettings, x => x.Text9, model.Text9_OverrideForStore, storeScope, false);
             _settingService.SaveSettingOverridablePerStore(swipeSliderProSettings, x => x.Link9, model.Link9_OverrideForStore, storeScope, false);
             _settingService.SaveSettingOverridablePerStore(swipeSliderProSettings, x => x.AltText9, model.AltText9_OverrideForStore, storeScope, false);
+
+            _settingService.SaveSettingOverridablePerStore(swipeSliderProSettings, x => x.SwipeType, model.SwipeType_OverrideForStore, storeScope, false);
+            
+            _settingService.SaveSettingOverridablePerStore(swipeSliderProSettings, x => x.CoverflowEffect3D, model.CoverflowEffect3D_OverrideForStore, storeScope, false);
+            
 
             //now clear settings cache
             _settingService.ClearCache();

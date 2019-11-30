@@ -7,6 +7,7 @@ using Nop.Services.Localization;
 using Nop.Services.Media;
 using Nop.Services.Plugins;
 using Nop.Web.Framework.Infrastructure;
+using Newtonsoft.Json;
 
 namespace Nop.Plugin.Widgets.SwipeSliderPro
 {
@@ -82,7 +83,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro
                 Picture8Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-8.jpg")), MimeTypes.ImagePJpeg, "nature-8").Id,
                 Picture9Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-9.jpg")), MimeTypes.ImagePJpeg, "nature-9").Id,
                 SwipeType = 1, //CoverflowEffect3d                
-                CoverflowEffect3D = new CoverflowEffect3DSettings() { AutoPlay = true, AspectRelation = 2, AutoPlayDelay = 2500, FreeMode = true, Loop = true }
+                CoverflowEffect3D = JsonConvert.SerializeObject(new CoverflowEffect3DSettings() { AutoPlay = true, AspectRelation = 2, AutoPlayDelay = 2500, FreeMode = true, Loop = true })
             };
             _settingService.SaveSetting(settings);
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Picture", "Picture");

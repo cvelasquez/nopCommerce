@@ -51,6 +51,6 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Models
 
         public int SwipeType { get; set; }
 
-        public CoverflowEffect3DSettings CoverflowEffect3D { get; set; }
+        public string CoverflowEffect3D { get; set; }
     }
 }
