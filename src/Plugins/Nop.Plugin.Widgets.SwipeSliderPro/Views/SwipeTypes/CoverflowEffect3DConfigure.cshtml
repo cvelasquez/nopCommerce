@@ -1,9 +1,9 @@
 ﻿@model Nop.Plugin.Widgets.SwipeSliderPro.Models.ConfigurationModel
-
 @using Nop.Plugin.Widgets.SwipeSliderPro.Models
 @using Nop.Services
 @using Newtonsoft.Json
 @{CoverflowEffect3DModel cover = JsonConvert.DeserializeObject<CoverflowEffect3DModel>(Model.CoverflowEffect3D); }
+
 <div class="panel panel-default">
     <div class="panel-heading" data-toggle="collapse" data-target="#cfe3">
         <i class="toggle-icon fa fa-plus"></i>
@@ -73,11 +73,12 @@
                     <nop-label asp-for="@cover.AspectRelation" />
                 </div>
                 <div class="col-md-9">
-                    <nop-select asp-for="@cover.AspectRelation" asp-items="@(((AspectRelationEnum)Model.SwipeType).ToSelectList())" />
+                    <nop-select asp-for="@cover.AspectRelation" asp-items="@(((AspectRelationEnum)cover.AspectRelation).ToSelectList())" />                    
                     <span asp-validation-for="@cover.AspectRelation"></span>
                 </div>
             </div>
         </div>
     </div>
+    
 </div>
 

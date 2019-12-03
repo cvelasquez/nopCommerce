@@ -1,13 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Nop.Web.Framework.Mvc.ModelBinding;
 using Nop.Web.Framework.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Nop.Plugin.Widgets.SwipeSliderPro.Models
 {
     public class ConfigurationModel : BaseNopModel
     {
         public int ActiveStoreScopeConfiguration { get; set; }
-        
+        #region Slides        
         [NopResourceDisplayName("Plugins.Widgets.SwipeSliderPro.Picture")]
         [UIHint("Picture")]
         public int Picture1Id { get; set; }
@@ -133,10 +134,11 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Models
         [NopResourceDisplayName("Plugins.Widgets.SwipeSliderPro.AltText")]
         public string AltText9 { get; set; }
         public bool AltText9_OverrideForStore { get; set; }
-
+        #endregion
         [NopResourceDisplayName("Plugins.Widgets.SwipeSliderPro.SwipeType")]
         public int SwipeType { get; set; }
         public bool SwipeType_OverrideForStore { get; set; }
+        [BindProperty(BinderType = typeof(CoverflowEffect3DModelBinder))]
         public string CoverflowEffect3D { get; set; }
         public bool CoverflowEffect3D_OverrideForStore { get; set; }
     }
