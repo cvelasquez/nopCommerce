@@ -1,39 +1,33 @@
 ﻿@model Nop.Plugin.Widgets.SwipeSliderPro.Models.PublicInfoModel
-@{
-    Layout = "";
+@using Newtonsoft.Json
+@using Nop.Plugin.Widgets.SwipeSliderPro.Models
+@{CoverflowEffect3DModel cover = JsonConvert.DeserializeObject<CoverflowEffect3DModel>(Model.CoverflowEffect3D);
+    string style = @"<style>
+.swiper-container {
+width: 100%;
+padding-top: 50px;
+padding-bottom: 50px;
+max-width: 1200px;
+}
 
-    Html.AddScriptParts(ResourceLocation.Head, "~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/js/swiper.js");
-    Html.AddScriptParts(ResourceLocation.Head, "~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/js/swiper.min.js");
-    Html.AddCssFileParts("~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/css/swiper.css");
-    Html.AddCssFileParts("~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/css/swiper.min.css");
-    Html.AppendHeadCustomParts(
-     @"<style>
-    .swiper-container {
-    width: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    max-width: 1200px;
-    }
-
-    .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    position: relative;
-    width: 30% !important;
-    padding-top: 45% !important;
-    }
-    </style>
-    ");
-
-    Html.AddInlineScriptParts(ResourceLocation.Footer, @"<script>
+.swiper-slide {
+background-position: center;
+background-size: cover;
+position: relative;
+width: 30% !important;
+padding-top:" + (cover.AspectRelation == (int)AspectRelationEnum.Square_Music_Apps ? "30" : "43.125") + @"% !important;
+}
+</style>
+";
+    string script = @"<script>
 var swiper = new Swiper('.swiper-container', {
 effect: 'coverflow',
 grabCursor: true,
 centeredSlides: true,
 slidesPerView: 'auto',
 centeredSlides: true,
-loop: true,
-freeMode: true,
+loop: " + (cover.Loop?"!0":"!1") + @",
+freeMode: " + (cover.FreeMode?"!0":"!1") + @",
 freeModeSticky: true,
 coverflowEffect: {
 rotate: 50,
@@ -43,14 +37,24 @@ modifier: 1,
 slideShadows: true,
 },
 autoplay: {
-delay: 2500,
-disableOnInteraction: false,
+delay: " + cover.AutoPlayDelay.ToString() + @",
+disableOnInteraction: " + (cover.AutoPlayDisableOnInteraction?"!0":"!1") + @",
 },
 pagination: {
 el: '.swiper-pagination',
 },
 });
-</script>");
+</script>";
+ }
+
+@{
+    Layout = "";
+    Html.AddScriptParts(ResourceLocation.Head, "~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/js/swiper.js");
+    Html.AddScriptParts(ResourceLocation.Head, "~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/js/swiper.min.js");
+    Html.AddCssFileParts("~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/css/swiper.css");
+    Html.AddCssFileParts("~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/css/swiper.min.css");    
+    Html.AppendHeadCustomParts(style);
+    Html.AddInlineScriptParts(ResourceLocation.Footer, script);
 }
 
 

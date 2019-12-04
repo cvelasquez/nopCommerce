@@ -84,7 +84,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Components
                 AltText9 = swipeSliderProSettings.AltText9,
 
                 SwipeType = swipeSliderProSettings.SwipeType,
-                CoverflowEffect3D = swipeSliderProSettings.CoverflowEffect3D
+                CoverflowEffect3D = swipeSliderProSettings.SwipeTypeSettings
             };
 
             if (string.IsNullOrEmpty(model.Picture1Url) && string.IsNullOrEmpty(model.Picture2Url) &&

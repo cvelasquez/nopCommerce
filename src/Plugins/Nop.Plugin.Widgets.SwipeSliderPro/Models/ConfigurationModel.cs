@@ -139,8 +139,8 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Models
         public int SwipeType { get; set; }
         public bool SwipeType_OverrideForStore { get; set; }
         [BindProperty(BinderType = typeof(CoverflowEffect3DModelBinder))]
-        public string CoverflowEffect3D { get; set; }
-        public bool CoverflowEffect3D_OverrideForStore { get; set; }
+        public string SwipeTypeSettings { get; set; }
+        public bool SwipeTypeSettings_OverrideForStore { get; set; }
     }
 
     public enum SwipeTypeEnum

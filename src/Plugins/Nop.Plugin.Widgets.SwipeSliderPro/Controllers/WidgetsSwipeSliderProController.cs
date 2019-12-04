@@ -97,7 +97,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Controllers
                 #endregion
                 SwipeType = swipeSliderProSettings.SwipeType,
                 
-                CoverflowEffect3D = swipeSliderProSettings.CoverflowEffect3D,
+                SwipeTypeSettings = swipeSliderProSettings.SwipeTypeSettings,
 
 
                 ActiveStoreScopeConfiguration = storeScope
@@ -154,7 +154,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Controllers
                 
                 model.SwipeType_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings, x => x.SwipeType, storeScope);
 
-                model.CoverflowEffect3D_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings, x => x.CoverflowEffect3D, storeScope);                
+                model.SwipeTypeSettings_OverrideForStore = _settingService.SettingExists(swipeSliderProSettings, x => x.SwipeTypeSettings, storeScope);                
 
             }
 
@@ -231,7 +231,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Controllers
             swipeSliderProSettings.AltText9 = model.AltText9;
             #endregion
             swipeSliderProSettings.SwipeType = model.SwipeType;
-            swipeSliderProSettings.CoverflowEffect3D = model.CoverflowEffect3D;
+            swipeSliderProSettings.SwipeTypeSettings = model.SwipeTypeSettings;
             /* We do not clear cache after each setting update.
              * This behavior can increase performance because cached settings will not be cleared 
              * and loaded from database after each update */
@@ -282,7 +282,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Controllers
 
             _settingService.SaveSettingOverridablePerStore(swipeSliderProSettings, x => x.SwipeType, model.SwipeType_OverrideForStore, storeScope, false);
             
-            _settingService.SaveSettingOverridablePerStore(swipeSliderProSettings, x => x.CoverflowEffect3D, model.CoverflowEffect3D_OverrideForStore, storeScope, false);
+            _settingService.SaveSettingOverridablePerStore(swipeSliderProSettings, x => x.SwipeTypeSettings, model.SwipeTypeSettings_OverrideForStore, storeScope, false);
             
 
             //now clear settings cache
