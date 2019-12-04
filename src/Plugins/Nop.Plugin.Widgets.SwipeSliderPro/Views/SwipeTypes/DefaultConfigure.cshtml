@@ -1,0 +1,84 @@
+﻿@model Nop.Plugin.Widgets.SwipeSliderPro.Models.ConfigurationModel
+@using Nop.Plugin.Widgets.SwipeSliderPro.Models
+@using Nop.Services
+@using Newtonsoft.Json
+@{CoverflowEffect3DModel cover = JsonConvert.DeserializeObject<CoverflowEffect3DModel>(Model.SwipeTypeSettings); }
+
+<div class="panel panel-default">
+    <div class="panel-heading" data-toggle="collapse" data-target="#cfe3">
+        <i class="toggle-icon fa fa-plus"></i>
+        <span>Coverflow Effect 3D</span>
+    </div>
+    <div id="cfe3" class="panel-body collapse">
+        <div class="panel panel-default">
+            <div class="panel-body">Demo</div>
+            <iframe data-src="https://swiperjs.com/demos/240-effect-coverflow.html" scrolling="no" src="https://swiperjs.com/demos/240-effect-coverflow.html" frameborder="0" style="width: 1200px;height: 400px;">
+            </iframe>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">Parameters</div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.Loop" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@cover.Loop" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="@cover.Loop" />
+                    <span asp-validation-for="@cover.Loop"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.FreeMode" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@cover.FreeMode" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="@cover.FreeMode" />
+                    <span asp-validation-for="@cover.FreeMode"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.AutoPlay" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@cover.AutoPlay" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="@cover.AutoPlay" />
+                    <span asp-validation-for="@cover.AutoPlay"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.AutoPlayDisableOnInteraction" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@cover.AutoPlayDisableOnInteraction" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="@cover.AutoPlayDisableOnInteraction" />
+                    <span asp-validation-for="@cover.AutoPlayDisableOnInteraction"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.AutoPlayDelay" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@cover.AutoPlayDelay" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="@cover.AutoPlayDelay" />
+                    <span asp-validation-for="@cover.AutoPlayDelay"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.AspectRelation" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@cover.AspectRelation" />
+                </div>
+                <div class="col-md-9">
+                    <nop-select asp-for="@cover.AspectRelation" asp-items="@(((AspectRelationEnum)cover.AspectRelation).ToSelectList())" />                    
+                    <span asp-validation-for="@cover.AspectRelation"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
