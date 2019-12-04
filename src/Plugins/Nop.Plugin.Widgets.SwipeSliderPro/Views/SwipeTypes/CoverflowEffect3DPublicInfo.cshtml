@@ -14,8 +14,8 @@ max-width: 1200px;
 background-position: center;
 background-size: cover;
 position: relative;
-width: 30% !important;
-padding-top:" + (cover.AspectRelation == (int)AspectRelationEnum.Square_Music_Apps ? "30" : "43.125") + @"% !important;
+width: " + (cover.AspectRelation == (int)AspectRelationEnum.Square_Music_Apps ? "25" : "30") + @"% !important;
+padding-top: " + (cover.AspectRelation == (int)AspectRelationEnum.Square_Music_Apps ? "25" : "43.125") + @"% !important;
 }
 </style>
 ";
