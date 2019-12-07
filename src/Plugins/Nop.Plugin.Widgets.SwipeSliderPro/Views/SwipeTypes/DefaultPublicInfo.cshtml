@@ -1,40 +1,30 @@
 ﻿@model Nop.Plugin.Widgets.SwipeSliderPro.Models.PublicInfoModel
 @using Newtonsoft.Json
 @using Nop.Plugin.Widgets.SwipeSliderPro.Models
-@{CoverflowEffect3DModel cover = JsonConvert.DeserializeObject<CoverflowEffect3DModel>(Model.CoverflowEffect3D);
-    string style = @"<style>
+@{DefaultModel cover = JsonConvert.DeserializeObject<DefaultModel>(Model.CoverflowEffect3D);
+    string style = @"
+<style>
 .swiper-container {
 width: 100%;
-padding-top: 50px;
-padding-bottom: 50px;
+width: 100%;
 }
 
 .swiper-slide {
 background-position: center;
 background-size: cover;
-position: relative;
-width: " + (cover.AspectRelation == (int)AspectRelationEnum.Square_Music_Apps ? "25" : "30") + @"% !important;
-padding-top: " + (cover.AspectRelation == (int)AspectRelationEnum.Square_Music_Apps ? "25" : "43.125") + @"% !important;
+
 }
 </style>
 ";
     string script = @"<script>
 var swiper = new Swiper('.swiper-container', {
-effect: 'coverflow',
-grabCursor: true,
-centeredSlides: true,
-slidesPerView: 'auto',
-centeredSlides: true,
+effect: '"+  Enum.GetName(typeof(EffectEnum),cover.Effect)+@"',
+grabCursor: " + (cover.GrabCursor?"!0":"!1") + @",
+centeredSlides: " + (cover.CenteredSlides?"!0":"!1") + @",
+slidesPerView: "+ (cover.SlidesPerView==(int)SlidesPerViewEnum.Auto?"'auto'":cover.SlidesPerView.ToString()) +@",
 loop: " + (cover.Loop?"!0":"!1") + @",
 freeMode: " + (cover.FreeMode?"!0":"!1") + @",
-freeModeSticky: true,
-coverflowEffect: {
-rotate: 50,
-stretch: 0,
-depth: 100,
-modifier: 1,
-slideShadows: true,
-},
+freeModeSticky: " + (cover.FreeMode_Sticky?"!0":"!1") + @",
 autoplay: {
 delay: " + cover.AutoPlayDelay.ToString() + @",
 disableOnInteraction: " + (cover.AutoPlayDisableOnInteraction?"!0":"!1") + @",
@@ -52,6 +42,7 @@ el: '.swiper-pagination',
     Html.AddScriptParts(ResourceLocation.Head, "~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/js/swiper.min.js");
     Html.AddCssFileParts("~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/css/swiper.css");
     Html.AddCssFileParts("~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/css/swiper.min.css");    
+    Html.AppendHeadCustomParts("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1\">");
     Html.AppendHeadCustomParts(style);
     Html.AddInlineScriptParts(ResourceLocation.Footer, script);
 }
