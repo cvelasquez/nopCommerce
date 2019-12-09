@@ -5,11 +5,11 @@
 @{DefaultModel cover = JsonConvert.DeserializeObject<DefaultModel>(Model.SwipeTypeSettings); }
 
 <div class="panel panel-default">
-    <div class="panel-heading" data-toggle="collapse" data-target="#cfe3">
+    <div class="panel-heading" data-toggle="collapse" data-target="#defPan">
         <i class="toggle-icon fa fa-plus"></i>
         <span>Default Mode</span>
     </div>
-    <div id="cfe3" class="panel-body collapse">
+    <div id="defPan" class="panel-body collapse">
         <div class="panel panel-default">
             <div class="panel-body">Demo</div>
             <iframe data-src="https://swiperjs.com/demos/220-effect-fade.html" scrolling="no" src="https://swiperjs.com/demos/220-effect-fade.html" frameborder="0" style="width: 1200px;height: 400px;">
@@ -17,6 +17,16 @@
         </div>
         <div class="panel panel-default">
             <div class="panel-body">Parameters</div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.Effect" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@cover.Effect" />
+                </div>
+                <div class="col-md-9">
+                    <nop-select asp-for="@cover.Effect" asp-items="@(((EffectEnum)cover.Effect).ToSelectList())" />
+                    <span asp-validation-for="@cover.Effect"></span>
+                </div>
+            </div>
             <div class="form-group">
                 <div class="col-md-3">
                     <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.NavigationArrow" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
@@ -33,7 +43,7 @@
                     <nop-label asp-for="@cover.Pagination" />
                 </div>
                 <div class="col-md-9">
-                    <nop-select asp-for="@cover.Pagination" asp-items="@(((AspectRelationEnum)cover.Pagination).ToSelectList())" />
+                    <nop-select asp-for="@cover.Pagination" asp-items="@(((PaginationEnum)cover.Pagination).ToSelectList())" />
                     <span asp-validation-for="@cover.Pagination"></span>
                 </div>
             </div>
@@ -53,7 +63,7 @@
                     <nop-label asp-for="@cover.SlidesPerView" />
                 </div>
                 <div class="col-md-9">
-                    <nop-select asp-for="@cover.SlidesPerView" asp-items="@(((AspectRelationEnum)cover.SlidesPerView).ToSelectList())" />
+                    <nop-select asp-for="@cover.SlidesPerView" asp-items="@(((SlidesPerViewEnum)cover.SlidesPerView).ToSelectList())" />
                     <span asp-validation-for="@cover.SlidesPerView"></span>
                 </div>
             </div>
@@ -65,6 +75,16 @@
                 <div class="col-md-9">
                     <nop-editor asp-for="@cover.Loop" />
                     <span asp-validation-for="@cover.Loop"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.GrabCursor" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@cover.GrabCursor" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="@cover.GrabCursor" />
+                    <span asp-validation-for="@cover.GrabCursor"></span>
                 </div>
             </div>
             <div class="form-group">
@@ -129,12 +149,12 @@
             </div>
             <div class="form-group">
                 <div class="col-md-3">
-                    <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.AutoHeigh" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
-                    <nop-label asp-for="@cover.AutoHeigh" />
+                    <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.AutoHeight" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@cover.AutoHeight" />
                 </div>
                 <div class="col-md-9">
-                    <nop-editor asp-for="@cover.AutoHeigh" />
-                    <span asp-validation-for="@cover.AutoHeigh"></span>
+                    <nop-editor asp-for="@cover.AutoHeight" />
+                    <span asp-validation-for="@cover.AutoHeight"></span>
                 </div>
             </div>
             <div class="form-group">
@@ -149,12 +169,12 @@
             </div>
             <div class="form-group">
                 <div class="col-md-3">
-                    <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.SlidesPerColumn" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
-                    <nop-label asp-for="@cover.SlidesPerColumn" />
+                    <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.FreeMode_Sticky" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                    <nop-label asp-for="@cover.FreeMode_Sticky" />
                 </div>
                 <div class="col-md-9">
-                    <nop-select asp-for="@cover.SlidesPerColumn" asp-items="@(((AspectRelationEnum)cover.SlidesPerColumn).ToSelectList())" />
-                    <span asp-validation-for="@cover.SlidesPerColumn"></span>
+                    <nop-editor asp-for="@cover.FreeMode_Sticky" />
+                    <span asp-validation-for="@cover.FreeMode_Sticky"></span>
                 </div>
             </div>
             <div class="form-group">
@@ -163,7 +183,7 @@
                     <nop-label asp-for="@cover.SlidesPerColumn" />
                 </div>
                 <div class="col-md-9">
-                    <nop-select asp-for="@cover.SlidesPerColumn" asp-items="@(((AspectRelationEnum)cover.SlidesPerColumn).ToSelectList())" />
+                    <nop-select asp-for="@cover.SlidesPerColumn" asp-items="@(((SlidesPerColumnEnum)cover.SlidesPerColumn).ToSelectList())" />
                     <span asp-validation-for="@cover.SlidesPerColumn"></span>
                 </div>
             </div>
@@ -173,17 +193,18 @@
                     <nop-label asp-for="@cover.HashOrHistory_Navigation" />
                 </div>
                 <div class="col-md-9">
-                    <nop-select asp-for="@cover.HashOrHistory_Navigation" asp-items="@(((AspectRelationEnum)cover.HashOrHistory_Navigation).ToSelectList())" />
+                    <nop-select asp-for="@cover.HashOrHistory_Navigation" asp-items="@(((HashOrHistoryEnum)cover.HashOrHistory_Navigation).ToSelectList())" />
                     <span asp-validation-for="@cover.HashOrHistory_Navigation"></span>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-3">
                     <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.Breakpoints" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
-                    <nop-label asp-for="@cover.Breakpoints" />
+                    <nop-label asp-for="@cover.Breakpoints" data-toggle="tooltip" title="Allows to set different parameter for different responsive breakpoints (screen sizes). Not all parameters can be changed in breakpoints, only those which are not required different layout and logic"/>
                 </div>
                 <div class="col-md-9">
-                    <nop-editor asp-for="@cover.Breakpoints" />
+                    @*<nop-editor asp-for="@cover.Breakpoints" />*@
+                    <textarea asp-for="@cover.Breakpoints"></textarea>
                     <span asp-validation-for="@cover.Breakpoints"></span>
                 </div>
             </div>

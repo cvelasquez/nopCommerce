@@ -8,6 +8,7 @@ using Nop.Services.Media;
 using Nop.Services.Plugins;
 using Nop.Web.Framework.Infrastructure;
 using Newtonsoft.Json;
+using Nop.Plugin.Widgets.SwipeSliderPro.Models;
 
 namespace Nop.Plugin.Widgets.SwipeSliderPro
 {
@@ -82,8 +83,10 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro
                 Picture7Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-7.jpg")), MimeTypes.ImagePJpeg, "nature-7").Id,
                 Picture8Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-8.jpg")), MimeTypes.ImagePJpeg, "nature-8").Id,
                 Picture9Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-9.jpg")), MimeTypes.ImagePJpeg, "nature-9").Id,
-                SwipeType = 1, //CoverflowEffect3d                
-                SwipeTypeSettings = JsonConvert.SerializeObject(new Models.CoverflowEffect3DModel() { AutoPlay = true, AspectRelation = 2, AutoPlayDelay = 2500, FreeMode = true, Loop = true })
+                SwipeType = 1, //Default                
+                SwipeTypeSettings = JsonConvert.SerializeObject(new DefaultModel() { 
+                    Pagination = (int)PaginationEnum.Normal_Mode,Effect = (int)EffectEnum.Fade,
+                    AutoPlay = true, AutoPlayDelay = 2500, Loop = true, GrabCursor = true })
             };
             _settingService.SaveSetting(settings);
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Picture", "Picture");

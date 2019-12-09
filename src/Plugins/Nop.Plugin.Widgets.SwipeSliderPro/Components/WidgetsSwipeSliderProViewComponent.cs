@@ -84,7 +84,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Components
                 AltText9 = swipeSliderProSettings.AltText9,
 
                 SwipeType = swipeSliderProSettings.SwipeType,
-                CoverflowEffect3D = swipeSliderProSettings.SwipeTypeSettings
+                SwipeTypeSettings = swipeSliderProSettings.SwipeTypeSettings
             };
 
             if (string.IsNullOrEmpty(model.Picture1Url) && string.IsNullOrEmpty(model.Picture2Url) &&
@@ -100,7 +100,7 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Components
                 case (int) SwipeTypeEnum.CoverflowEffect3d:
                     return View("~/Plugins/Widgets.SwipeSliderPro/Views/SwipeTypes/CoverflowEffect3DPublicInfo.cshtml", model);                    
                 default:
-                    return View("~/Plugins/Widgets.SwipeSliderPro/Views/PublicInfo.cshtml", model);                    
+                    return View("~/Plugins/Widgets.SwipeSliderPro/Views/DefaultPublicInfo.cshtml", model);                    
             }
             
         }
