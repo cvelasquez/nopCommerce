@@ -2,23 +2,23 @@
 @using Newtonsoft.Json
 @using Nop.Plugin.Widgets.SwipeSliderPro.Models
 @{DefaultModel cover = JsonConvert.DeserializeObject<DefaultModel>(Model.SwipeTypeSettings);
-    string style = @"
-<style>
+    string style = @"<style>
 .swiper-container {
-width: 100%;
-width: 100%;
+width: 100% ;
+height: 100%;
 }
 
 .swiper-slide {
 background-position: center;
 background-size: cover;
-
+position: relative;
+width: 100% !important;
+padding-top: 40% !important;
 }
 </style>
 ";
     string script = @"<script>
 var swiper = new Swiper('.swiper-container', {
-effect: '"+  Enum.GetName(typeof(EffectEnum),cover.Effect)+@"',
 grabCursor: " + (cover.GrabCursor?"!0":"!1") + @",
 centeredSlides: " + (cover.CenteredSlides?"!0":"!1") + @",
 slidesPerView: "+ (cover.SlidesPerView==(int)SlidesPerViewEnum.Auto?"'auto'":cover.SlidesPerView.ToString()) +@",

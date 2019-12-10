@@ -72,6 +72,11 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro.Models
         Hash = 1,
         History = 2,
     }
+    public enum AspectRelationEnum
+    {
+        Square_Music_Apps = 0,
+        Rectangle_Books_Movies = 1,        
+    }
     public class DefaultModelBinder : IModelBinder
     {
         public Task BindModelAsync(ModelBindingContext bindingContext)
