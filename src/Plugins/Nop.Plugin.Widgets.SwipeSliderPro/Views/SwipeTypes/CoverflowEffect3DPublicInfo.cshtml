@@ -14,8 +14,8 @@ max-width: 1200px;
 background-position: center;
 background-size: cover;
 position: relative;
-width: " + (cover.AspectRelation == (int)AspectRelationEnum.Square_Music_Apps ? "25" : "30") + @"% !important;
-padding-top: " + (cover.AspectRelation == (int)AspectRelationEnum.Square_Music_Apps ? "25" : "43.125") + @"% !important;
+width: " + (cover.Cover_AspectRelation == (int)AspectRelationEnum.Square_Music_Apps ? "25" : "30") + @"% !important;
+padding-top: " + (cover.Cover_AspectRelation == (int)AspectRelationEnum.Square_Music_Apps ? "25" : "43.125") + @"% !important;
 }
 </style>
 ";
@@ -25,8 +25,8 @@ effect: 'coverflow',
 grabCursor: true,
 centeredSlides: true,
 slidesPerView: 'auto',
-loop: " + (cover.Loop?"!0":"!1") + @",
-freeMode: " + (cover.FreeMode?"!0":"!1") + @",
+loop: " + (cover.Cover_Loop?"!0":"!1") + @",
+freeMode: " + (cover.Cover_FreeMode?"!0":"!1") + @",
 freeModeSticky: true,
 coverflowEffect: {
 rotate: 50,
@@ -36,12 +36,18 @@ modifier: 1,
 slideShadows: true,
 },
 autoplay: {
-delay: " + cover.AutoPlayDelay.ToString() + @",
-disableOnInteraction: " + (cover.AutoPlayDisableOnInteraction?"!0":"!1") + @",
-},
+delay: " + cover.Cover_AutoPlayDelay.ToString() + @",
+disableOnInteraction: " + (cover.Cover_AutoPlayDisableOnInteraction?"!0":"!1") + @",
+}," + (cover.Cover_Pagination== (int)PaginationEnum.Off?"":
+@"
 pagination: {
-el: '.swiper-pagination',
-},
+    el: '.swiper-pagination',
+    type: '" + (cover.Cover_Pagination == (int)PaginationEnum.Fraction ? "fraction" :
+    cover.Cover_Pagination == (int)PaginationEnum.ProgressBar ? "progressbar" : "bullets") +
+    @"',
+    clickable: true,
+    dynamicBullets: " + (cover.Cover_Pagination == (int)PaginationEnum.Dynamic_Bullets ? "true" : "false") +@",
+},")+@"
 });
 </script>";
  }

@@ -6,6 +6,8 @@
 .swiper-container {
 width: 100% ;
 height: 100%;
+padding-top: 50px;
+padding-bottom: 50px;
 }
 
 .swiper-slide {
@@ -13,25 +15,56 @@ background-position: center;
 background-size: cover;
 position: relative;
 width: 100% !important;
-padding-top: 40% !important;
+padding-top: 30% !important;
 }
 </style>
 ";
+
     string script = @"<script>
 var swiper = new Swiper('.swiper-container', {
-grabCursor: " + (cover.GrabCursor?"!0":"!1") + @",
-centeredSlides: " + (cover.CenteredSlides?"!0":"!1") + @",
-slidesPerView: "+ (cover.SlidesPerView==(int)SlidesPerViewEnum.Auto?"'auto'":cover.SlidesPerView.ToString()) +@",
-loop: " + (cover.Loop?"!0":"!1") + @",
-freeMode: " + (cover.FreeMode?"!0":"!1") + @",
-freeModeSticky: " + (cover.FreeMode_Sticky?"!0":"!1") + @",
+grabCursor: " + (cover.GrabCursor ? "!0" : "!1") + @",
+centeredSlides: " + (cover.CenteredSlides ? "!0" : "!1") + @",
+slidesPerView: " + (cover.SlidesPerView == (int)SlidesPerViewEnum.Auto ? "'auto'" : cover.SlidesPerView.ToString()) + @",
+slidesPerColumn: " + (cover.SlidesPerColumn < 1 ? "1" : cover.SlidesPerColumn.ToString()) + @",
+loop: " + (cover.Loop ? "!0" : "!1") + @",
+freeMode: " + (cover.FreeMode ? "!0" : "!1") + @",
+freeModeSticky: " + (cover.FreeMode_Sticky ? "!0" : "!1") + @",
+spaceBetween: "+ cover.SpaceBetweenSlides+@"," + (cover.AutoPlayDelay < 1?"":@"
 autoplay: {
-delay: " + cover.AutoPlayDelay.ToString() + @",
-disableOnInteraction: " + (cover.AutoPlayDisableOnInteraction?"!0":"!1") + @",
-},
+    delay: " + cover.AutoPlayDelay.ToString() + @",
+    disableOnInteraction: " + (cover.AutoPlayDisableOnInteraction ? "!0" : "!1") + @",    
+},")+
+(cover.Effect == (int)EffectEnum.Fade?
+@"
+effect: 'fade',
+speed: 700,
+fadeEffect: {
+    crossFade: true,
+},":"") +
+(cover.Effect == (int)EffectEnum.Flip?
+@"
+effect: 'flip',
+speed: 900,
+flipEffect: {
+    slideShadows: true,
+},":"") +
+(cover.Pagination == (int)PaginationEnum.Off?"":
+@"
 pagination: {
-el: '.swiper-pagination',
-},
+    el: '.swiper-pagination',
+    type: '" + (cover.Pagination == (int)PaginationEnum.Fraction ? "fraction" :
+    cover.Pagination == (int)PaginationEnum.ProgressBar ? "progressbar" : "bullets") +
+    @"',
+    clickable: true,
+    dynamicBullets: " + (cover.Pagination == (int)PaginationEnum.Dynamic_Bullets ? "true" : "false") +@",
+},")+@"
+navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+},"  + (!cover.KeyboardEnabled?"":@"
+keyboard: {
+    enabled: true,
+},")+@"
 });
 </script>";
  }
@@ -41,42 +74,42 @@ el: '.swiper-pagination',
     Html.AddScriptParts(ResourceLocation.Head, "~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/js/swiper.js");
     Html.AddScriptParts(ResourceLocation.Head, "~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/js/swiper.min.js");
     Html.AddCssFileParts("~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/css/swiper.css");
-    Html.AddCssFileParts("~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/css/swiper.min.css");    
+    Html.AddCssFileParts("~/Plugins/Widgets.SwipeSliderPro/Content/swipesliderpro/css/swiper.min.css");
     Html.AppendHeadCustomParts("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1\">");
     Html.AppendHeadCustomParts(style);
     Html.AddInlineScriptParts(ResourceLocation.Footer, script);
 }
 
 
-<div class="swiper-container">
-    <div class="swiper-wrapper">
-        @{
-            var dataSlide1 = new ViewDataDictionary(ViewData)
-            {
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            @{
+                var dataSlide1 = new ViewDataDictionary(ViewData)
+                {
                 {"pictureUrl", Model.Picture1Url},
                 { "text", Model.Text1},
                 { "link", Model.Link1},
                 {"alttext", Model.AltText1 }
             };
 
-            @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide1)
-        }
+                @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide1)
+            }
 
-        @{
-            var dataSlide2 = new ViewDataDictionary(ViewData)
-            {
+            @{
+                var dataSlide2 = new ViewDataDictionary(ViewData)
+                {
                 {"pictureUrl", Model.Picture2Url},
                 { "text", Model.Text2},
                 { "link", Model.Link2},
                 {"alttext", Model.AltText2 }
             };
 
-            @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide2)
-        }
+                @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide2)
+            }
 
-        @{
-            var dataSlide3 = new ViewDataDictionary(ViewData)
-            {
+            @{
+                var dataSlide3 = new ViewDataDictionary(ViewData)
+                {
                 {"pictureUrl", Model.Picture3Url},
                 { "text", Model.Text3},
                 { "link", Model.Link3},
@@ -84,77 +117,81 @@ el: '.swiper-pagination',
                 { "dataTransition", "slideInLeft"}
             };
 
-            @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide3)
-        }
+                @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide3)
+            }
 
-        @{
-            var dataSlide4 = new ViewDataDictionary(ViewData)
-            {
+            @{
+                var dataSlide4 = new ViewDataDictionary(ViewData)
+                {
                 {"pictureUrl", Model.Picture4Url},
                 { "text", Model.Text4},
                 { "link", Model.Link4},
                 {"alttext", Model.AltText4 }
             };
 
-            @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide4)
-        }
+                @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide4)
+            }
 
-        @{
-            var dataSlide5 = new ViewDataDictionary(ViewData)
-            {
+            @{
+                var dataSlide5 = new ViewDataDictionary(ViewData)
+                {
                 {"pictureUrl", Model.Picture5Url},
                 { "text", Model.Text5},
                 { "link", Model.Link5},
                 {"alttext", Model.AltText5 }
             };
 
-            @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide5)
-        }
-        @{
-            var dataSlide6 = new ViewDataDictionary(ViewData)
-            {
+                @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide5)
+            }
+            @{
+                var dataSlide6 = new ViewDataDictionary(ViewData)
+                {
                 {"pictureUrl", Model.Picture6Url},
                 { "text", Model.Text6},
                 { "link", Model.Link6},
                 {"alttext", Model.AltText6 }
             };
 
-            @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide6)
-        }
-        @{
-            var dataSlide7 = new ViewDataDictionary(ViewData)
-            {
+                @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide6)
+            }
+            @{
+                var dataSlide7 = new ViewDataDictionary(ViewData)
+                {
                 {"pictureUrl", Model.Picture7Url},
                 { "text", Model.Text7},
                 { "link", Model.Link7},
                 {"alttext", Model.AltText7 }
             };
 
-            @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide7)
-        }
-        @{
-            var dataSlide8 = new ViewDataDictionary(ViewData)
-            {
+                @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide7)
+            }
+            @{
+                var dataSlide8 = new ViewDataDictionary(ViewData)
+                {
                 {"pictureUrl", Model.Picture8Url},
                 { "text", Model.Text8},
                 { "link", Model.Link8},
                 {"alttext", Model.AltText8 }
             };
 
-            @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide8)
-        }
-        @{
-            var dataSlide9 = new ViewDataDictionary(ViewData)
-            {
+                @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide8)
+            }
+            @{
+                var dataSlide9 = new ViewDataDictionary(ViewData)
+                {
                 {"pictureUrl", Model.Picture9Url},
                 { "text", Model.Text9},
                 { "link", Model.Link9},
                 {"alttext", Model.AltText9 }
             };
 
-            @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide9)
-        }
+                @await Html.PartialAsync("~/Plugins/Widgets.SwipeSliderPro/Views/_PublicInfo.SliderLine.cshtml", dataSlide9)
+            }
+        </div>
+            @{ if (cover.NavigationArrow) 
+                {
+                    @:<div class="swiper-button-next"></div>
+                    @:<div class="swiper-button-prev"></div>
+                }
+             }            
     </div>
-    <!-- Add Pagination -->
-    <!-- <div class="swiper-pagination"></div> -->
-</div>

@@ -89,16 +89,6 @@
             </div>
             <div class="form-group">
                 <div class="col-md-3">
-                    <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.AutoPlay" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
-                    <nop-label asp-for="@cover.AutoPlay" />
-                </div>
-                <div class="col-md-9">
-                    <nop-editor asp-for="@cover.AutoPlay" />
-                    <span asp-validation-for="@cover.AutoPlay"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-3">
                     <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.AutoPlayDisableOnInteraction" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
                     <nop-label asp-for="@cover.AutoPlayDisableOnInteraction" />
                 </div>
@@ -135,16 +125,6 @@
                 <div class="col-md-9">
                     <nop-editor asp-for="@cover.KeyboardEnabled" />
                     <span asp-validation-for="@cover.KeyboardEnabled"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-3">
-                    <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.MouseWheel" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
-                    <nop-label asp-for="@cover.MouseWheel" />
-                </div>
-                <div class="col-md-9">
-                    <nop-editor asp-for="@cover.MouseWheel" />
-                    <span asp-validation-for="@cover.MouseWheel"></span>
                 </div>
             </div>
             <div class="form-group">
@@ -187,7 +167,7 @@
                     <span asp-validation-for="@cover.SlidesPerColumn"></span>
                 </div>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <div class="col-md-3">
                     <nop-override-store-checkbox asp-for="@Model.SwipeTypeSettings_OverrideForStore" asp-input="@cover.HashOrHistory_Navigation" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
                     <nop-label asp-for="@cover.HashOrHistory_Navigation" />
@@ -203,11 +183,11 @@
                     <nop-label asp-for="@cover.Breakpoints" data-toggle="tooltip" title="Allows to set different parameter for different responsive breakpoints (screen sizes). Not all parameters can be changed in breakpoints, only those which are not required different layout and logic"/>
                 </div>
                 <div class="col-md-9">
-                    @*<nop-editor asp-for="@cover.Breakpoints" />*@
+                    <nop-editor asp-for="@cover.Breakpoints" />
                     <textarea asp-for="@cover.Breakpoints"></textarea>
                     <span asp-validation-for="@cover.Breakpoints"></span>
                 </div>
-            </div>
+            </div>*@
         </div>
     </div>
     

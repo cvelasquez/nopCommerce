@@ -84,9 +84,11 @@ namespace Nop.Plugin.Widgets.SwipeSliderPro
                 Picture8Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-8.jpg")), MimeTypes.ImagePJpeg, "nature-8").Id,
                 Picture9Id = _pictureService.InsertPicture(_fileProvider.ReadAllBytes(_fileProvider.Combine(sampleImagesPath, "nature-9.jpg")), MimeTypes.ImagePJpeg, "nature-9").Id,
                 SwipeType = 1, //Default                
-                SwipeTypeSettings = JsonConvert.SerializeObject(new DefaultModel() { 
-                    Pagination = (int)PaginationEnum.Normal_Mode,Effect = (int)EffectEnum.Fade,
-                    AutoPlay = true, AutoPlayDelay = 2500, Loop = true, GrabCursor = true })
+                SwipeTypeSettings = JsonConvert.SerializeObject(new GlobalModel() { 
+                    Pagination = (int)PaginationEnum.Dynamic_Bullets,Effect = (int)EffectEnum.Fade,
+                    AutoPlayDelay = 2500, Loop = true, GrabCursor = true, NavigationArrow = true,
+                    Cover_AutoPlayDelay = 2500, Cover_AspectRelation = (int)AspectRelationEnum.Square_Music_Apps,
+                    Cover_FreeMode = true, Cover_Loop = true, Cover_AutoPlayDisableOnInteraction = false})
             };
             _settingService.SaveSetting(settings);
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Widgets.SwipeSliderPro.Picture", "Picture");
